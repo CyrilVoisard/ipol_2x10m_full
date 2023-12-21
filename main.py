@@ -97,6 +97,113 @@ def print_steps_detection(seg_lim_full, seg_lim_corrected, steps_lim_full, steps
 
     with open("gait_events.txt", "wt") as f:
         print(info_msg.format(**display_dict), file=f)
+                
+
+def print_semio_parameters(parameters_dict):
+    """Dump the parameters computed from the trial in a text file (trial_info.txt)
+
+    Parameters
+    ----------
+    parameters_dict : dict
+        Parameters of the trial.
+    """
+
+    display_dict = {'V': "V: {V}".format(**parameters_dict),
+                    'StrT': "StrT: {StrT}".format(**parameters_dict),
+                    'UTurn': "UTurn: {UTurn}".format(**parameters_dict),
+                    'SteL': "SteL: {SteL}".format(**parameters_dict),
+                    'SPARC_gyr': "SteL: {SteL}".format(**parameters_dict),
+                    'LDLJAcc': "LDLJAcc: {LDLJAcc}".format(**parameters_dict),
+                    'CVStrT': "CVStrT: {CVStrT}".format(**parameters_dict),
+                    'CVdsT': "CVdsT: {CVdsT}".format(**parameters_dict),
+                    'P1_aCC': "P1_aCC: {P1_aCC}".format(**parameters_dict),
+                    'P2_aCC': "P2_aCC: {P2_aCC}".format(**parameters_dict),
+                    'ML_RMS': "ML_RMS: {ML_RMS}".format(**parameters_dict),
+                    'P1P2': "P1P2: {P1P2}".format(**parameters_dict),
+                    'MSwTR': "MSwTR: {MSwTR}".format(**parameters_dict),
+                    'AP_iHR': "AP_iHR: {AP_iHR}".format(**parameters_dict),
+                    'ML_iHR': "ML_iHR: {ML_iHR}".format(**parameters_dict),
+                    'CC_iHR': "CC_iHR: {CC_iHR}".format(**parameters_dict),
+                    'dstT': "dstT: {dstT}".format(**parameters_dict), 
+                    'sd_V': "{sd_V}".format(**parameters_dict),
+                    'sd_StrT': "{sd_StrT}".format(**parameters_dict),
+                    'sd_UTurn': "{sd_UTurn}".format(**parameters_dict),
+                    'sd_SteL': "{sd_SteL}".format(**parameters_dict),
+                    'sd_SPARC_gyr': "{sd_SteL}".format(**parameters_dict),
+                    'sd_LDLJAcc': "{sd_LDLJAcc}".format(**parameters_dict),
+                    'sd_CVStrT': "{sd_CVStrT}".format(**parameters_dict),
+                    'sd_CVdsT': "{sd_CVdsT}".format(**parameters_dict),
+                    'sd_P1_aCC': "{sd_P1_aCC}".format(**parameters_dict),
+                    'sd_P2_aCC': "{sd_P2_aCC}".format(**parameters_dict),
+                    'sd_ML_RMS': "{sd_ML_RMS}".format(**parameters_dict),
+                    'sd_P1P2': "{sd_P1P2}".format(**parameters_dict),
+                    'sd_MSwTR': "{sd_MSwTR}".format(**parameters_dict),
+                    'sd_AP_iHR': "{sd_AP_iHR}".format(**parameters_dict),
+                    'sd_ML_iHR': "{sd_ML_iHR}".format(**parameters_dict),
+                    'sd_CC_iHR': "{sd_CC_iHR}".format(**parameters_dict),
+                    'sd_dstT': "{sd_dstT}".format(**parameters_dict)
+                    
+                    }
+    info_msg = """
+    Values                        | Z-Scores
+    ------------------------------+------------------------------
+    {V:<30}| {sd_V:<30}
+    {StrT:<30}| {sd_StrT:<30}
+    {UTurn:<30}| {sd_UTurn:<30}
+    {SteL:<30}| {sd_SteL:<30}
+    {SPARC_gyr:<30}| {sd_SPARC_gyr:<30}
+    {LDLJAcc:<30}| {sd_LDLJAcc:<30}
+    {CVStrT:<30}| {sd_CVStrT:<30}
+    {CVdsT:<30}| {sd_CVdsT:<30}
+    {P1_aCC:<30}| {sd_P1_aCC:<30}
+    {P2_aCC:<30}| {sd_P2_aCC:<30}
+    {ML_RMS:<30}| {sd_ML_RMS:<30}
+    {P1P2:<30}| {sd_P1P2:<30}
+    {MSwTR:<30}| {sd_MSwTR:<30}
+    {AP_iHR:<30}| {sd_AP_iHR:<30}
+    {ML_iHR:<30}| {sd_ML_iHR:<30}
+    {CC_iHR:<30}| {sd_CC_iHR:<30}
+    """
+
+    # Dump information
+    os.chdir(data_WD) # Get back to the normal WD
+
+    with open("trial_parameters.txt", "wt") as f:
+        print(info_msg.format(**display_dict), file=f)
+        
+
+def print_semio_criteria(criteria_dict):
+    """Dump the parameters computed from the trial in a text file (trial_info.txt)
+
+    Parameters
+    ----------
+    parameters_dict : dict
+        Parameters of the trial.
+    """
+
+    display_dict = {'Average Speed': "Average Speed: {Average Speed}".format(**criteria_dict),
+                    'Springiness': "Springiness: {Springiness}".format(**criteria_dict),
+                    'Sturdiness': "Sturdiness: {Sturdiness}".format(**criteria_dict),
+                    'Smoothness': "Smoothness: {Smoothness}".format(**criteria_dict),
+                    'Steadiness': "Steadiness: {Steadiness}".format(**criteria_dict),
+                    'Stability': "Stability: {Stability}".format(**criteria_dict),
+                    'Symmetry': "Symmetry: {Symmetry}".format(**criteria_dict),
+                    'Synchronisation': "Synchronisation: {Synchronisation}".format(**criteria_dict)
+                    }
+    info_msg = """
+    Z-Scores
+    --------------------------------------------------+--------------------------------------------------
+    {Average Speed:<50}| {Steadiness:<50}
+    {Springiness:<50}| {Stability:<50}
+    {Sturdiness:<50}| {Symmetry:<50}
+    {Smoothness:<50}| {Synchronisation:<50}
+    """
+
+    # Dump information
+    os.chdir(data_WD) # Get back to the normal WD
+
+    with open("trial_criteria.txt", "wt") as f:
+        print(info_msg.format(**display_dict), file=f)
 
 
 if __name__ == "__main__":
