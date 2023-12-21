@@ -219,6 +219,8 @@ if __name__ == "__main__":
                         help='Acquistion frequency.')
     parser.add_argument('-age', metavar='age', type=int,
                         help='Age of the subject.')
+    parser.add_argument('-distance', metavar='distance', type=int,
+                        help='Walked distance (m).')
     parser.add_argument('-min_z', metavar='min_z', type=int,
                         help='Minimum for Z-score.')
     parser.add_argument('-max_z', metavar='max_z', type=int,
