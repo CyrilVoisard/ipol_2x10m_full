@@ -6,7 +6,7 @@ import json
 from package import features as ft
 
 
-def compute_semio_val(age, steps_lim, seg_lim, data_lb, freq):
+def compute_semio_val(age, steps_lim, seg_lim, data_lb, freq, models_folder="./models"):
     """Compute the Z-score for each criterion from the calculation of the 17 parameters
 
     Arguments:
@@ -15,6 +15,7 @@ def compute_semio_val(age, steps_lim, seg_lim, data_lb, freq):
         seg_lim {dataframe} -- pandas dataframe with phases events 
         data_lb {dataframe} -- pandas dataframe with pre-processed lower back sensor time series
         freq {int} -- acquisition frequency
+        models_folder {str} -- path of the folder containing models values
 
     Returns
     -------
@@ -40,7 +41,7 @@ def compute_semio_val(age, steps_lim, seg_lim, data_lb, freq):
     age1 = ages[ref][0]
     age2 = ages[ref][1]
     r = 'ScoreT7S-' + str(age1) + '-' + str(age2)
-    path = osp.join('models', r) + '.json'
+    path = osp.join(models_folder, r) + '.json'
     with open(path) as json_data:
         d = np.array(json.load(json_data))
 
