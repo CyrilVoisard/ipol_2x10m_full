@@ -146,5 +146,20 @@ if __name__ == "__main__":
     # load file to be download
     download.json_report(seg_lim_corrected, steps_lim_corrected, freq, output=data_WD)
 
+    # compute semio values (dictionnaries)
+    criteria_names, criteria, parameters = compute_semio_val.compute_semio_val(age, steps_lim_corrected, seg_lim_corrected, data_lb, freq)
+    
+    # print semiogram values
+    parameters_names = ["StrT", "sd_StrT", "UTurn", "sd_UTurn", "SteL", "sd_SteL",
+              "SPARC_gyr", "sd_SPARC_gyr", "LDLJAcc", "sd_LDLJAcc", "CVStrT", "sd_CVStrT", "CVdsT", "sd_CVdsT",
+              "P1_aCC", "sd_P1_aCC", "P2_aCC", "sd_P2_aCC", "ML_RMS", "sd_ML_RMS", "P1P2", "sd_P1P2",
+              "MSwTR", "sd_MSwTR", "AP_iHR", "sd_AP_iHR", "ML_iHR", "sd_ML_iHR", "CC_iHR", "sd_CC_iHR", "dstT", "sd_dstT",
+              "V", "sd_V"]
+    parameters_dict = dict(zip(parameters_names, parameters))
+    print_semio_parameters(parameters_dict)
+
+    criteria_dict = dict(zip(criteria_names, criteria))
+    print_semio_criteria(criteria_dict)
+
     print("ok charge")
     sys.exit(0)
