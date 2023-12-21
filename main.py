@@ -4,6 +4,7 @@
 import os
 import json
 import sys
+import pandas as pd
 from package import import_data, dtw_detection, seg_detection, plot_stepdetection, quality, download, compute_semio_val, radar_design
 
 # if you need to access a file next to the source code, use the variable ROOT
@@ -156,6 +157,7 @@ if __name__ == "__main__":
 
     # compute semio values (dictionnaries)
     models_folder = os.path.join(ROOT, "models")
+    seg_lim_corrected = pd.DataFrame(seg_lim_corrected)
     criteria_names, criteria, parameters = compute_semio_val.compute_semio_val(age, steps_lim_corrected, seg_lim_corrected, data_lb, freq, models_folder=models_folder)
     
     # print semiogram values
