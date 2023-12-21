@@ -110,9 +110,17 @@ if __name__ == "__main__":
     
     parser.add_argument('-freq', metavar='freq',
                         help='Acquistion frequency.')
+    parser.add_argument('-age', metavar='age', type=int,
+                        help='Age of the subject.')
+    parser.add_argument('-min_z', metavar='min_z', type=int,
+                        help='Minimum for Z-score.')
+    parser.add_argument('-max_z', metavar='max_z', type=int,
+                        help='Maximum for Z-score.')
     args = parser.parse_args()
 
     freq = int(args.freq)
+    #age = args.age
+    age = None 
 
     # quality index tab
     q1 = [0, 0]  # protocol observation quality [only one u-turn, no steps outside the limits]
