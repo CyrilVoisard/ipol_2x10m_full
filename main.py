@@ -155,7 +155,7 @@ if __name__ == "__main__":
     download.json_report(seg_lim_corrected, steps_lim_corrected, freq, output=data_WD)
 
     # compute semio values (dictionnaries)
-    models_folder = "models"
+    models_folder = os.path.join(ROOT, "models")
     criteria_names, criteria, parameters = compute_semio_val.compute_semio_val(age, steps_lim_corrected, seg_lim_corrected, data_lb, freq)#, models_folder=models_folder)
     
     # print semiogram values
