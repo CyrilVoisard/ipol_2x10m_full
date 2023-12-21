@@ -265,7 +265,7 @@ if __name__ == "__main__":
     # compute semio values (dictionnaries)
     models_folder = os.path.join(ROOT, "models")
     seg_lim_corrected = pd.DataFrame(seg_lim_corrected)
-    criteria_names, criteria, parameters = compute_semio_val.compute_semio_val(age, steps_lim_corrected, seg_lim_corrected, data_lb, freq, models_folder=models_folder)
+    criteria_names, criteria, parameters = compute_semio_val.compute_semio_val(age, distance, steps_lim_corrected, seg_lim_corrected, data_lb, freq, models_folder=models_folder)
     
     # print semiogram values
     parameters_names = ["StrT", "sd_StrT", "UTurn", "sd_UTurn", "SteL", "sd_SteL",
