@@ -6,11 +6,12 @@ import json
 from package import features as ft
 
 
-def compute_semio_val(age, steps_lim, seg_lim, data_lb, freq, models_folder="./models"):
+def compute_semio_val(age, distance, steps_lim, seg_lim, data_lb, freq, models_folder="./models"):
     """Compute the Z-score for each criterion from the calculation of the 17 parameters
 
     Arguments:
         age {int} -- age 
+        distance {int} -- distance walked (m)
         steps_lim {dataframe} -- pandas dataframe with gait events
         seg_lim {dataframe} -- pandas dataframe with phases events 
         data_lb {dataframe} -- pandas dataframe with pre-processed lower back sensor time series
@@ -62,7 +63,7 @@ def compute_semio_val(age, steps_lim, seg_lim, data_lb, freq, models_folder="./m
     spr = np.average(spr_z_scores)
 
     # sturdiness
-    stu_feat = [ft.step_length(data_lb, seg_lim, steps_lim, freq=freq)]
+    stu_feat = [ft.step_length(data_lb, seg_lim, steps_lim, freq=freq, distance=distance)]
     stu_ref = [d[d[:, 0] == 'Stu_L']]
     stu_z_scores = []
     for j in range(len(stu_feat)):
@@ -162,7 +163,7 @@ def compute_semio_val(age, steps_lim, seg_lim, data_lb, freq, models_folder="./m
     syn = np.average(syn_z_scores)
 
     # average speed
-    avg_feat = [ft.avg_speed(data_lb, seg_lim, steps_lim, release_u_turn=True, freq=freq)]
+    avg_feat = [ft.avg_speed(data_lb, seg_lim, steps_lim, release_u_turn=True, freq=freq, distance=distance)]
     avg_ref = [d[d[:, 0] == 'AvgSpeed']]
     avg_z_scores = []
     for j in range(len(avg_feat)):
