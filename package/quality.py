@@ -103,6 +103,8 @@ def correct_detection(steps_lim, seg_lim):
       
   steps_lim_corrected = steps_lim.copy()
   steps_lim_corrected["Correct"] = correct
+  type_dict = {'Foot': int, 'HS': int, 'TO': int}
+  steps_lim_corrected = steps_lim_corrected.astype(type_dict)
 
   # 
   q1_1 = 100 - 10*len(steps_lim_corrected[steps_lim_corrected["Correct"]==0])
