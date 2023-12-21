@@ -280,6 +280,8 @@ if __name__ == "__main__":
     print_semio_criteria(criteria_dict)
 
     # semiogram design
+
+    print("test", args.min_z, args.max_z)
     radar_design.new_radar_superpose({"unique": criteria}, min_r=args.min_z, max_r=args.max_z, output=data_WD, name="semio")
 
     print("ok charge")
